@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 
 app = Flask(__name__)
@@ -6,8 +7,6 @@ app = Flask(__name__)
 def index():
     return "<h1>Servidor listo 🚀</h1>"
 
-# Flask ya sirve automáticamente la carpeta /static
-# Tu video estará en /static/videos/mivideo.mp4
-
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))  # Railway asigna este puerto
+    app.run(host="0.0.0.0", port=port)
